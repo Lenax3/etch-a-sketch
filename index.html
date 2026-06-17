@@ -8,12 +8,28 @@
 </head>
 <body>
 
-    <!-- Grid Size Slider -->
-    <input type="range" id="grid-size" min="1" max="64" value="16">
-    <span id="grid-value">16</span>
+<div class="layout">
 
-    <div id="container"></div>
+    <!-- Controls -->
+    <div class="controls">
 
-    <script src="script.js"></script>
+        <input type="color" id="color-picker" value="#3C6952">
+
+        <div class="color-swatch" id="color-swatch"></div>
+
+        <input type="range" id="grid-size" min="1" max="64" value="16">
+        <span id="grid-value">16</span>
+
+    </div>
+
+    <!-- Canvas / Staffelei -->
+    <div class="easel">
+        <div class="easel-top"></div>
+        <div id="container"></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
