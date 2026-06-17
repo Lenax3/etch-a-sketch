@@ -20,7 +20,6 @@ body {
 
 #Title {
     color: #f8f4ec;
-
     margin: 0;
 
     font-family: "Special Elite", serif;
@@ -45,14 +44,16 @@ body {
     width: 220px;
 }
 
-/* Control Panel */
+/* CONTROL PANELS */
 .controls {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;  
-   color:  #f8f4ec;
+
+    gap: 14px;
     padding: 18px;
+
+    color: #f8f4ec;
 
     background: linear-gradient(145deg, #ffffff, #8c8986 0.8);
     border: 2px solid rgba(30, 20, 15, 0.6);
@@ -63,12 +64,57 @@ body {
         inset 0 0 0 2px rgba(255,255,255,0.08);
 }
 
-/* Color Picker Circle */
+/* BUTTONS (Draw / Eraser / Clear) */
+.controls button {
+    width: 160px;
+    padding: 12px 16px;
+
+    background: rgba(248, 244, 236, 0.15);
+    color: #f8f4ec;
+
+    border: 1px solid rgba(248, 244, 236, 0.3);
+    border-radius: 8px;
+
+    font-family: "Special Elite", serif;
+    font-size: 1.1rem;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.controls button:hover {
+    background: rgba(248, 244, 236, 0.25);
+}
+
+.controls button.active {
+    background: #f8f4ec;
+    color: #4A4040;
+}
+
+
+.controls h2 {
+    margin: 0;
+    font-family: "Special Elite", serif;
+    font-size: 1.1rem;
+    color: #f8f4ec;
+}
+
+/* SLIDER */
+input[type="range"] {
+    accent-color: #e1dddf;
+    width: 140px;
+}
+
+#grid-value {
+    font-family: "Special Elite", serif;
+    color: #f8f4ec;
+}
+
+/* COLOR PICKER */
 .color-swatch {
     width: 150px;
     height: 150px;
-  
-    border: 1px solid rgb(252, 242, 225 0.04);
 
     border-radius: 50%;
     cursor: pointer;
@@ -76,25 +122,13 @@ body {
     box-shadow:
         inset 0 0 8px rgba(0, 0, 0, 0.4),
         0 8px 20px rgba(0, 0, 0, 0.3);
-
-    transition: transform 0.2s ease;
 }
 
-.color-swatch:hover {
-    transform: scale(1.05);
-}
-
-/* hide native picker */
 #color-picker {
     display: none;
 }
 
-/* Slider */
-input[type="range"] {
-    accent-color: #e1dddf;
-    width: 160px;
-}
-
+/* EASEL */
 .easel {
     padding: 20px;
     background: linear-gradient(145deg, #745a45, #9c7d5f);
@@ -105,8 +139,7 @@ input[type="range"] {
         inset 0 0 0 2px rgba(255, 255, 255, 0.08);
 }
 
-
-/* Canvas */
+/* CANVAS  */
 #container {
     width: 600px;
     height: 600px;
@@ -114,11 +147,9 @@ input[type="range"] {
     display: grid;
 
     background: #f8f4ec;
-
     border: 2px solid #938b85;
 }
 
-/* Squares */
 .square {
     border: 1px solid rgba(62, 53, 44, 0.01);
 }

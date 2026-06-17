@@ -5,8 +5,15 @@ const valueDisplay = document.querySelector("#grid-value");
 const colorPicker = document.querySelector("#color-picker");
 const colorSwatch = document.querySelector("#color-swatch");
 
+const drawBtn = document.querySelector("#draw-btn");
+const eraserBtn = document.querySelector("#eraser-btn");
+const clearBtn = document.querySelector("#clear-btn");
+
 let currentColor = colorPicker.value;
 let isDrawing = false;
+let mode = "draw";
+
+const canvasColor = "#f8f4ec";
 
 /* ---------- Color Picker ---------- */
 
@@ -23,6 +30,30 @@ colorSwatch.addEventListener("click", () => {
 colorPicker.addEventListener("input", (e) => {
     currentColor = e.target.value;
     updateSwatch(currentColor);
+});
+
+/* ---------- MODE SYSTEM ---------- */
+
+function setActive(button) {
+    [drawBtn, eraserBtn].forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+}
+
+drawBtn.addEventListener("click", () => {
+    mode = "draw";
+    setActive(drawBtn);
+});
+
+eraserBtn.addEventListener("click", () => {
+    mode = "eraser";
+    setActive(eraserBtn);
+});
+
+clearBtn.addEventListener("click", () => {
+    const squares = document.querySelectorAll(".square");
+    squares.forEach(square => {
+        square.style.backgroundColor = canvasColor;
+    });
 });
 
 /* ---------- Drawing State ---------- */
@@ -50,13 +81,15 @@ function createGrid(size) {
         square.classList.add("square");
 
         square.addEventListener("mousedown", () => {
-            square.style.backgroundColor = currentColor;
+            square.style.backgroundColor =
+                mode === "eraser" ? canvasColor : currentColor;
         });
 
         square.addEventListener("mouseenter", () => {
             if (!isDrawing) return;
 
-            square.style.backgroundColor = currentColor;
+            square.style.backgroundColor =
+                mode === "eraser" ? canvasColor : currentColor;
         });
 
         container.appendChild(square);
@@ -69,7 +102,6 @@ createGrid(16);
 
 slider.addEventListener("input", () => {
     const size = slider.value;
-
     valueDisplay.textContent = size;
 
     createGrid(size);
