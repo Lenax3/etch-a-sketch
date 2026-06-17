@@ -1,27 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-
     font-family: sans-serif;
     margin-top: 30px;
 }
 
+/* Grid Container */
 #container {
-    width: 960px;
-    height: 960px;
+    width: 900px;
+    height: 900px;
 
     border: 2px solid black;
 
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
 }
 
+/* Grid Squares */
 .square {
-    width: 60px;
-    height: 60px;
-
     border: 1px solid lightgray;
-    box-sizing: border-box;
 }

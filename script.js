@@ -1,17 +1,38 @@
-/* erstellt 1 square:
-const square = document.createElement("div")
-square.classList.add("square")
-container.appendChild(square) */
+const container = document.querySelector("#container");
+const slider = document.querySelector("#grid-size");
+const valueDisplay = document.querySelector("#grid-value");
 
-const container = document.querySelector('#container');
+function createGrid(size) {
 
-for (let i = 0; i < 256; i++) {
-    const square = document.createElement("div")
+    if (size > 64) size = 64;
 
-    square.classList.add("square")
-    square.addEventListener("mouseenter", () => { //* färbt das sqaure ein, wenn Maus es berührt
-        square.style.backgroundColor = "#5A1861";
-    });
+    container.innerHTML = "";
 
-    container.appendChild(square)
+    // Grid Layout
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    for (let i = 0; i < size * size; i++) {
+
+        const square = document.createElement("div");
+        square.classList.add("square");
+
+        square.addEventListener("mouseenter", () => {
+            square.style.backgroundColor = "#5A1861";
+        });
+
+        container.appendChild(square);
+    }
 }
+
+// Initial grid
+createGrid(16);
+
+// Slider interaction
+slider.addEventListener("input", () => {
+    const size = slider.value;
+
+    valueDisplay.textContent = size;
+
+    createGrid(size);
+});
